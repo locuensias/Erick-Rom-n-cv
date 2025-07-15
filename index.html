@@ -1,0 +1,190 @@
+<!DOCTYPE html> <html lang="es"> <head>
+<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Perfil con Desvanecimiento</title> <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+    /* --- ESTILOS PERSONALIZADOS --- */
+    body {
+        /* // Fondo con un degradado de un color oscuro a uno fucsia */
+        background: linear-gradient(to bottom, #1e070d, #fd3efd);
+        /* // Tipo de letra para toda la página */
+        font-family: 'Inter', sans-serif;
+    }
+
+    .tarjeta-perfil {
+        max-width: 1300px; /* // Ancho máximo de la tarjeta de perfil */
+        min-height: 400px; /* // Altura mínima de la tarjeta */
+        margin-left: auto; /* // Centra la tarjeta horizontalmente */
+        margin-right: auto; /* // Centra la tarjeta horizontalmente */
+        background-color: rgba(105, 7, 84, 1); /* // Color de fondo de la tarjeta */
+        -webkit-backdrop-filter: blur(4px); /* // Efecto de desenfoque para el fondo (para navegadores como Safari) */
+        backdrop-filter: blur(4px); /* // Efecto de desenfoque para el fondo */
+        padding: 32px; /* // Espacio interior de la tarjeta */
+        border-radius: 16px; /* // Bordes redondeados de la tarjeta */
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* // Sombra para darle profundidad */
+        display: flex; /* // Activa un modo de diseño flexible para alinear elementos */
+        align-items: center; /* // Centra los elementos verticalmente */
+        flex-direction: column; /* // Apila los elementos uno sobre otro (en vertical) */
+        gap: 16px; /* // Espacio entre los elementos dentro de la tarjeta */
+    }
+
+    /* // Estilos que se aplican solo en pantallas grandes (más de 768px de ancho) */
+    @media (min-width: 768px) {
+        .tarjeta-perfil {
+            flex-direction: row; /* // Pone los elementos uno al lado del otro (en horizontal) */
+            padding: 40px; /* // Más espacio interior en pantallas grandes */
+            gap: 32px; /* // Más espacio entre elementos en pantallas grandes */
+        }
+    }
+
+    /* // Estilos para la barra de scroll de la caja de información */
+    .info-box::-webkit-scrollbar { width: 7px; } /* // Ancho de la barra de scroll */
+    .info-box::-webkit-scrollbar-track { background: rgba(105, 7, 84, 0); border-radius: 50px; } /* // Color del fondo de la barra de scroll */
+    .info-box::-webkit-scrollbar-thumb { background: rgb(253, 62, 253); border-radius: 50px; } /* // Color de la barra de scroll */
+    .info-box::-webkit-scrollbar-thumb:hover { background: #ec4899; } /* // Color de la barra cuando pasas el mouse por encima */
+    
+    /* --- ESTILOS PARA LA TARJETA DEL IFRAME --- */
+    .iframe-card {
+        width: 400px; /* // Ancho de la tarjeta que contiene el ejemplo */
+        height: 700px; /* // Alto de la tarjeta que contiene el ejemplo */
+        margin: 0 auto; /* // Centra la tarjeta horizontalmente */
+        padding: 10px; /* // Espacio interior */
+        border-radius: 16px; /* // Bordes redondeados */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* // Sombra de la tarjeta */
+        background-color: #1e070d; /* // Color de fondo */
+        color: #fd3efd; /* // Color del texto */
+        border: 1px solid #fd3efd; /* // Borde de la tarjeta */
+        overflow: hidden; /* // Oculta lo que se salga de la tarjeta */
+        /* // Transición suave para el efecto al pasar el mouse */
+        transition: all 0.3s ease-in-out;
+    }
+
+    .iframe-card:hover {
+        /* // Hace que la tarjeta crezca un poquito al pasar el mouse */
+        transform: scale(1.02); 
+        /* // Cambia la sombra para que se vea más destacada */
+        box-shadow: 0 8px 30px rgba(253, 62, 253, 0.3);
+    }
+</style>
+</head>
+<body style="min-height: 100vh;"> <div id="fade-container" style="position: fixed; top: 0; left: 0; right: 0; padding: 16px; transition: opacity 500ms ease-in-out; z-index: 10;">
+    <div class="tarjeta-perfil"> <div style="flex-shrink: 0; text-align: center;"> <div style="width: 240px; height: 240px; background-color: black; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto;">
+                <span style="color: #9ca3af; font-size: 12px;">Foto</span> </div>
+            <div style="margin-top: 16px; color: #fd3efd; font-size: 20px;">
+                01/2004
+            </div>
+        </div>
+        
+        <div style="flex-grow: 1; width: 100%;">
+            <div class="info-box" style="padding: 16px; border-radius: 12px; border: 1px solid rgb(253, 62, 253); overflow-y: auto; max-height: 300px; width: 100%; max-width: 900px; background-color: rgba(30, 7, 13, 0.8);">
+                <h2 style="font-size: 30px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Erick Román</h2> <div style="height: 28px;"></div> <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Áreas y herramientas</h2> <p style="font-size: 18px; margin-bottom: 16px; color: #fd3efd;"> Desarrollador con experiencia en la creación de interfaces dinámicas para web y aplicaciones móviles. Especializado en el desarrollo Front-End con React, HTML, CSS y Bootstrap para diseños responsivos y visualmente atractivos, además de publicar proyectos en GitHub Pages para su fácil acceso. En el ámbito móvil, trabaja con Android Studio y Flutter para construir aplicaciones nativas y multiplataforma, abarcando desde el diseño de interfaces hasta la integración con APIs y sistemas embebidos.
+                </p>
+                <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Estudios y herramientas extras</h2>
+                <p style="font-size: 18px; margin-bottom: 16px; color: #fd3efd;">
+                    Estudiante de tercer año de Ingeniería en la Universidad Diego Portales, con formación práctica en diversas tecnologías y entornos de desarrollo. Además de las herramientas anteriores también se tiene experiencia en el uso de bases de datos en la nube como Neon PostgreSQL, y conocimientos en lenguajes como C++, Java, MySQL, Neo4j y MongoDB. Además de herramientas complementarias como Docker, Wireshark, AWS y GitHub, integrándolas en distintos contextos académicos y de proyectos personales.
+                </p>
+                <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Estilo y motivación personal</h2>
+                <p style="font-size: 18px; margin-bottom: 16px; color: #fd3efd;">
+                    Apasionado por el diseño de páginas amigables con el usuario, donde cada sección está cuidadosamente pensada para ser clara, funcional y visualmente atractiva. Particular interés en la composición visual, paleta de colores y detalles que mejoran la experiencia del usuario. Valoro cada nuevo desafío como una oportunidad para aprender y crecer. Los problemas técnicos o conceptuales no son obstáculos, sino retos que se abordan con curiosidad y dedicación, Si algo es demasiado complejo, lo tomo casi como un ataque a mi orgullo. Por lo que sin importar el problema será enfrentado y superado.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="espaciado-dinamico" style="padding-left: 24px; padding-right: 24px; padding-top: 48px; padding-bottom: 48px;">
+    <div style="max-width: 1152px; margin-left: auto; margin-right: auto; padding: 32px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); margin-bottom: 48px; background-color: #0e1c3f; color: #40fefe; border: 1px solid #0e1c3f;">
+        <h1 style="font-size: 30px; font-weight: bold; margin-bottom: 16px;">Front End:</h1>
+        <p>
+            Desarrollador Front-End con experiencia en la construcción de interfaces dinámicas mediante React. Se emplea tecnología HTML y CSS para la estructura y el diseño visual, junto con Bootstrap para estilos responsivos. El uso de JSON facilita el intercambio de datos, y los proyectos se publican en GitHub Pages para su visualización y revisión por parte de los clientes.
+        </p>
+    </div>
+    
+    <div class="iframe-card">
+        <h1 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"></h1>
+        <p style="font-size: 30px; margin-bottom: 1px;">
+            Ejemplo Landing Page.
+        </p>
+        <div style="height: 20px;"></div> <div style="width: 100%; height: 89%;"> <iframe 
+                style="width: 100%; height: 100%; border-radius: 8px; border: 2px solid #fd3efd; background-color: #1e070d;"
+                title="Ejemplo de página anidada"
+                srcdoc='
+                <!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>FazbearGang - IA para el Futuro</title> <script src="https://cdn.tailwindcss.com"></script> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet"> <style> /* --- ESTILOS PERSONALIZADOS --- */ body { background: linear-gradient(135deg, #020024 0%, #090979 35%, #002d4b 100%); font-family: "Roboto Mono", monospace; color: #e0e0e0; } /* --- 🔥 AÑADIDO: ESTILOS PARA LA BARRA DE SCROLL --- */ body::-webkit-scrollbar { width: 7px; } body::-webkit-scrollbar-track { background: rgba(105, 7, 84, 0); border-radius: 50px; } body::-webkit-scrollbar-thumb { background: rgb(0, 212, 255); border-radius: 50px; } body::-webkit-scrollbar-thumb:hover { background: #00d4ff; } .navbar { background-color: rgba(2, 0, 36, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0, 212, 255, 0.2); } .hero-text { text-shadow: 0 0 10px rgba(0, 212, 255, 0.7), 0 0 20px rgba(0, 212, 255, 0.5); } .card { background-color: rgba(9, 9, 121, 0.2); border: 1px solid rgba(0, 212, 255, 0.3); transition: all 0.3s ease-in-out; } .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px -10px rgba(0, 212, 255, 0.4); border-color: rgba(0, 212, 255, 0.8); } .cta-button { background-color: #00d4ff; color: #020024; transition: all 0.3s ease; } .cta-button:hover { background-color: #ffffff; box-shadow: 0 0 20px #00d4ff; } /* Estilos para la animación de fade-in */ .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; } .fade-in-section.is-visible { opacity: 1; transform: translateY(0); } </style> </head> <body class="min-h-screen"> <nav class="navbar fixed top-0 left-0 right-0 z-50"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex items-center justify-between h-16"> <div class="flex items-center"> <span class="font-bold text-xl text-white hero-text">FazbearGang</span> </div> <div class="hidden md:block"> <div class="ml-10 flex items-baseline space-x-4"> <a href="#servicios" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Servicios</a> <a href="#nosotros" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nosotros</a> <a href="#contacto" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contacto</a> </div> </div> </div> </div> </nav> <main class="pt-16"> <header class="h-screen flex items-center justify-center text-center px-4"> <div class="max-w-4xl"> <h1 class="text-4xl md:text-6xl font-bold hero-text leading-tight">Desbloquea el Potencial del Mañana con Inteligencia Artificial</h1> <p class="mt-6 text-lg md:text-xl text-gray-300">En FazbearGang, transformamos datos en decisiones, complejidad en oportunidad y visiones en realidad.</p> <a href="#" onclick="return false;" class="cta-button mt-8 inline-block font-bold py-3 px-8 rounded-full text-lg">Inicia tu Proyecto</a> </div> </header> <section id="servicios" class="py-20 px-4 fade-in-section"> <div class="max-w-6xl mx-auto"> <h2 class="text-3xl font-bold text-center mb-12">Nuestras Áreas de Especialización</h2> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div class="card p-8 rounded-lg text-center"><h3 class="text-xl font-bold mb-4 text-white">Análisis Predictivo</h3><p class="text-gray-400">Anticipamos tendencias de mercado y comportamiento del consumidor para darte una ventaja competitiva.</p></div> <div class="card p-8 rounded-lg text-center"><h3 class="text-xl font-bold mb-4 text-white">Automatización de Procesos</h3><p class="text-gray-400">Optimizamos tus operaciones, reduciendo costos y liberando a tu equipo para tareas de mayor valor.</p></div> <div class="card p-8 rounded-lg text-center"><h3 class="text-xl font-bold mb-4 text-white">Procesamiento de Lenguaje Natural</h3><p class="text-gray-400">Desarrollamos chatbots y sistemas que entienden y responden a tus clientes de manera inteligente.</p></div> </div> </div> </section> <section id="nosotros" class="py-20 px-4 bg-black bg-opacity-20 fade-in-section"><div class="max-w-4xl mx-auto text-center"><h2 class="text-3xl font-bold mb-6">Innovación Impulsada por Humanos</h2><p class="text-lg text-gray-300">Somos un equipo de ingenieros, científicos de datos y visionarios apasionados por resolver los problemas más complejos del mundo. En FazbearGang, creemos que la tecnología debe servir a la humanidad, y trabajamos cada día para construir un futuro más inteligente y eficiente para todos.</p></div></section> <section id="contacto" class="py-20 px-4 fade-in-section"><div class="max-w-2xl mx-auto text-center"><h2 class="text-3xl font-bold mb-4">¿Listo para dar el salto cuántico?</h2><p class="text-gray-300 mb-8">Hablemos de cómo la IA puede revolucionar tu negocio. Déjanos tu correo y te contactaremos.</p><form class="flex flex-col md:flex-row gap-4 justify-center"><input type="email" placeholder="tu.correo@empresa.com" class="w-full md:w-auto flex-grow bg-gray-800 text-white px-4 py-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"><button type="button" class="cta-button font-bold py-3 px-8 rounded-md">Solicitar Consulta</button></form></div></section> </main> <footer class="text-center py-6 border-t border-gray-800"><p>&copy; 2025 FazbearGang. Todos los derechos reservados.</p></footer> <script> document.addEventListener("DOMContentLoaded", () => { const sections = document.querySelectorAll(".fade-in-section"); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); } }); }, { threshold: 0.1 }); sections.forEach(section => { observer.observe(section); }); }); </script> </body> </html>
+                '>
+            </iframe>
+        </div>
+  </div>
+  
+  <div style="height: 50px;"></div> <div style="max-width: 1152px; margin-left: auto; margin-right: auto; padding: 32px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); margin-bottom: 48px; background-color: #0e1c3f; color: #40fefe; border: 1px solid #0e1c3f;">
+        <h1 style="font-size: 30px; font-weight: bold; margin-bottom: 16px;">Desarrollo Mobile Ligero:</h1>
+        <p>
+            Desarrollo aplicaciones móviles utilizando Android Studio y Flutter. Estas herramientas permiten crear apps nativas y multiplataforma con interfaces modernas y rendimiento eficiente. La experiencia incluye desde el diseño de la interfaz hasta la integración con APIs tanto con paginas web como con microprocesadores.
+        </p>
+    </div>
+    
+</div>
+
+</body>
+</html>
+
+<script>
+// --- SCRIPT PARA EL EFECTO DE DESVANECIMIENTO ---
+// // Se asegura de que el HTML se haya cargado completamente antes de ejecutar el código
+document.addEventListener('DOMContentLoaded', () => {
+// // Busca el contenedor que se va a desvanecer
+const fadeContainer = document.getElementById('fade-container');
+// // Si no lo encuentra, no hace nada más
+if (!fadeContainer) return;
+
+// // Escucha el evento de scroll en la ventana
+window.addEventListener('scroll', () => {
+    const fadeStart = 50;  // // Punto (en píxeles) donde empieza a desvanecerse
+    const fadeEnd = 300;   // // Punto (en píxeles) donde termina de desvanecerse
+    let scrollY = window.scrollY; // // Obtiene cuánto se ha hecho scroll verticalmente
+    
+    // // Si el scroll está al principio, la opacidad es 1 (totalmente visible)
+    if (scrollY <= fadeStart) {
+        fadeContainer.style.opacity = '1';
+    // // Si el scroll está entre el inicio y el fin del desvanecimiento
+    } else if (scrollY > fadeStart && scrollY <= fadeEnd) {
+        // // Calcula la opacidad: 1 menos el progreso del scroll en el rango de desvanecimiento
+        let opacity = 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart);
+        fadeContainer.style.opacity = opacity;
+    // // Si el scroll ha pasado el punto final, la opacidad es 0 (totalmente invisible)
+    } else {
+        fadeContainer.style.opacity = '0';
+    }
+});
+});
+
+// --- SCRIPT PARA AJUSTAR EL ESPACIADO SUPERIOR ---
+function ajustarEspaciado() {
+// // Busca el contenedor del contenido principal
+const contenedor = document.getElementById("espaciado-dinamico");
+// // Si no lo encuentra, no hace nada más
+if (!contenedor) return;
+
+// // Comprueba si la ventana es más ancha de 768px (vista de escritorio)
+const esHorizontal = window.innerWidth > 768;
+// // Obtiene la altura de la tarjeta de perfil que está fija arriba
+const alturaTarjetaFija = document.getElementById('fade-container')?.clientHeight || 0;
+
+// // Si es vista de escritorio
+if (esHorizontal) {
+    // // Ajusta el espaciado superior para que sea la altura de la tarjeta más 50px
+    contenedor.style.paddingTop = (alturaTarjetaFija + 50) + "px";
+// // Si es vista de móvil
+} else {
+    // // Ajusta el espaciado superior para que sea la altura de la tarjeta más 100px
+    contenedor.style.paddingTop = (alturaTarjetaFija + 100) + "px";
+}
+}
+
+// // Llama a la función cuando la página se carga por primera vez
+window.addEventListener("load", ajustarEspaciado);
+// // Llama a la función cada vez que se cambia el tamaño de la ventana (ej. al girar el celular)
+window.addEventListener("resize", ajustarEspaciado);
+</script>

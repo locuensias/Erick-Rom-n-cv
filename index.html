@@ -1,195 +1,306 @@
-<!DOCTYPE html> <html lang="es"> <head>
-<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Erick Román cv</title> <script src="https://cdn.tailwindcss.com"></script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-
-<style>
-    /* --- ESTILOS PERSONALIZADOS --- */
-    body {
-        /* // Fondo con un degradado de un color oscuro a uno fucsia */
-        background: linear-gradient(to bottom, #1e070d, #fd3efd);
-        /* // Tipo de letra para toda la página */
-        font-family: 'Inter', sans-serif;
-    }
-
-    .tarjeta-perfil {
-        max-width: 1300px; /* // Ancho máximo de la tarjeta de perfil */
-        min-height: 400px; /* // Altura mínima de la tarjeta */
-        margin-left: auto; /* // Centra la tarjeta horizontalmente */
-        margin-right: auto; /* // Centra la tarjeta horizontalmente */
-        background-color: rgba(105, 7, 84, 1); /* // Color de fondo de la tarjeta */
-        -webkit-backdrop-filter: blur(4px); /* // Efecto de desenfoque para el fondo (para navegadores como Safari) */
-        backdrop-filter: blur(4px); /* // Efecto de desenfoque para el fondo */
-        padding: 32px; /* // Espacio interior de la tarjeta */
-        border-radius: 16px; /* // Bordes redondeados de la tarjeta */
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* // Sombra para darle profundidad */
-        display: flex; /* // Activa un modo de diseño flexible para alinear elementos */
-        align-items: center; /* // Centra los elementos verticalmente */
-        flex-direction: column; /* // Apila los elementos uno sobre otro (en vertical) */
-        gap: 16px; /* // Espacio entre los elementos dentro de la tarjeta */
-    }
-
-    /* // Estilos que se aplican solo en pantallas grandes (más de 768px de ancho) */
-    @media (min-width: 768px) {
-        .tarjeta-perfil {
-            flex-direction: row; /* // Pone los elementos uno al lado del otro (en horizontal) */
-            padding: 40px; /* // Más espacio interior en pantallas grandes */
-            gap: 32px; /* // Más espacio entre elementos en pantallas grandes */
-        }
-    }
-
-    /* // Estilos para la barra de scroll de la caja de información */
-    .info-box::-webkit-scrollbar { width: 7px; } /* // Ancho de la barra de scroll */
-    .info-box::-webkit-scrollbar-track { background: rgba(105, 7, 84, 0); border-radius: 50px; } /* // Color del fondo de la barra de scroll */
-    .info-box::-webkit-scrollbar-thumb { background: rgb(253, 62, 253); border-radius: 50px; } /* // Color de la barra de scroll */
-    .info-box::-webkit-scrollbar-thumb:hover { background: #ec4899; } /* // Color de la barra cuando pasas el mouse por encima */
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio</title>
     
-    /* --- ESTILOS PARA LA TARJETA DEL IFRAME --- */
-    .iframe-card {
-        width: 400px; /* // Ancho de la tarjeta que contiene el ejemplo */
-        height: 700px; /* // Alto de la tarjeta que contiene el ejemplo */
-        margin: 0 auto; /* // Centra la tarjeta horizontalmente */
-        padding: 10px; /* // Espacio interior */
-        border-radius: 16px; /* // Bordes redondeados */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* // Sombra de la tarjeta */
-        background-color: #1e070d; /* // Color de fondo */
-        color: #fd3efd; /* // Color del texto */
-        border: 1px solid #fd3efd; /* // Borde de la tarjeta */
-        overflow: hidden; /* // Oculta lo que se salga de la tarjeta */
-        /* // Transición suave para el efecto al pasar el mouse */
-        transition: all 0.3s ease-in-out;
-    }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        "sans": ["Lato", "sans-serif"],
+                        "display": ["Montserrat", "sans-serif"],
+                    },
+                    colors: {
+                        "brand-accent": {
+                            400: "#a78bfa", // violet-400
+                            500: "#8b5cf6", // violet-500
+                            600: "#7c3aed", // violet-600
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-    .iframe-card:hover {
-        /* // Hace que la tarjeta crezca un poquito al pasar el mouse */
-        transform: scale(1.02); 
-        /* // Cambia la sombra para que se vea más destacada */
-        box-shadow: 0 8px 30px rgba(253, 62, 253, 0.3);
-    }
-</style>
+    <style>
+        /* Estilos personalizados para efectos complejos */
+        body {
+            /* El font-family base se define en la config de Tailwind */
+            background-image: linear-gradient(to right, #01a5c9,#40fefe); /* gray-950  */
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #a78bfa, #ec4899); /* violet-400 a pink-500 */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* --- 🔥 MODIFICADO: Contenedor de las tarjetas para centrarlas --- */
+        #contenedor-proyectos {
+            display: flex;
+            justify-content: center; /* Centra las tarjetas horizontalmente */
+            align-items: flex-start; /* Alinea las tarjetas en la parte superior */
+            flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente línea si no caben */
+            gap: 2rem; /* Espacio entre las tarjetas */
+        }
+
+        .iframe-card {
+            width: 400px;
+            /* // Ancho de la tarjeta que contiene el ejemplo */
+            height: auto; /* 🔥 MODIFICADO: Altura automática para acomodar el botón */
+            display: flex; /* 🔥 NUEVO: Habilitado flexbox para la estructura interna */
+            flex-direction: column; /* 🔥 NUEVO: Apila los elementos verticalmente */
+            padding: 10px;
+            /* // Espacio interior */
+            border-radius: 16px;
+            /* // Bordes redondeados */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            /* // Sombra de la tarjeta */
+            background-color: #1e070d;
+            /* // Color de fondo */
+            color: #fd3efd;
+            /* // Color del texto */
+            border: 1px solid #fd3efd;
+            /* // Borde de la tarjeta */
+            overflow: hidden;
+            /* // Oculta lo que se salga de la tarjeta */
+            /* // Transición suave para el efecto al hacer clic */
+            transition: all 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* cursor: pointer; */ /* Removido para que el click sea solo en el botón */
+        }
+        
+        /* Bloquea la interacción con el iframe por defecto */
+        .iframe-card iframe {
+            pointer-events: none;
+            flex-grow: 1; /* 🔥 NUEVO: Hace que el iframe ocupe el espacio disponible */
+        }
+
+        /* Estilos para la tarjeta cuando se hace clic en el botón */
+        .iframe-card.agrandada {
+            width: 90vw;  /* <--- NUEVO ANCHO AL CRECER (relativo a la pantalla) */
+            height: 90vh; /* <--- NUEVA ALTURA AL CRECER (relativo a la pantalla) */
+            box-shadow: 0 10px 35px rgba(253, 62, 253, 0.4);
+            position: fixed; /* 🔥 NUEVO: Posicionamiento para superponer */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* 🔥 NUEVO: Centrado perfecto en pantalla */
+            z-index: 100; /* 🔥 NUEVO: Asegura que esté por encima de todo */
+        }
+
+        /* Permite la interacción con el iframe solo cuando la tarjeta está agrandada */
+        .iframe-card.agrandada iframe {
+            pointer-events: auto;
+        }
+
+        /* --- 🔥 NUEVO: Estilos para el botón "Recorrer" --- */
+        .recorrer-btn {
+            background-color: #7c3aed; /* violet-600 */
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 8px;
+            margin-top: 10px; /* Espacio sobre el botón */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .recorrer-btn:hover {
+            background-color: #8b5cf6; /* violet-500 */
+        }
+
+    </style>
 </head>
-<body style="min-height: 100vh;"> <div id="fade-container" style="position: fixed; top: 0; left: 0; right: 0; padding: 16px; transition: opacity 500ms ease-in-out; z-index: 10;">
-    <div class="tarjeta-perfil"> <div style="flex-shrink: 0; text-align: center;"> 
-        <img 
-    src="me.jpg" 
-    alt="Foto de perfil de Erick Román" 
-    style="width: 240px; height: 240px; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.3); object-fit: cover; margin-left: auto; margin-right: auto;"
->
-            <div style="margin-top: 16px; color: #fd3efd; font-size: 20px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-  <img src="https://flagcdn.com/w20/cl.png" alt="Bandera de Chile" style="width: 20px;">
-  <span>01/2004</span>
-</div>
+
+<body class="bg-gray-900 text-gray-300 font-sans antialiased">
+
+    <main>
+    <section id="hero" class="relative text-center overflow-hidden bg-[#690754] pt-24 pb-20">
+
+
+            <div class="container mx-auto px-6 z-10">
+                <div class="relative w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full mb-8 p-1 bg-gradient-to-tr from-brand-accent-500 to-pink-500">
+                    <div class="bg-gray-800 w-full h-full rounded-full overflow-hidden">
+                        <img src="me.jpg" alt="Foto de perfil de Nombre Apellido" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <h1 class="font-display text-5xl md:text-8xl font-black text-white tracking-tighter uppercase">
+                    <span class="text-gradient">Erick Román H.</span>
+                </h1>
+                <p class="mt-4 text-xl md:text-2xl text-gray-400 font-light">Front End HTML y Dart</p>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="relative text-center min-h-screen flex items-center justify-center overflow-hidden bg-[linear-gradient(to_bottom,#690754,#1e080d)] py-20">
+            <div class="container mx-auto px-6 grid md:grid-cols-5 gap-12 items-center">
+                <div class="md:col-span-2">
+                    <div class="w-full h-80 rounded-lg bg-gray-800 flex items-center justify-center border-2 border-brand-accent-500/50 shadow-lg">
+                        <span class="text-gray-500 font-bold">Imagen 2</span>
+                    </div>
+                </div>
+                <div class="md:col-span-3">
+                <h2 style="font-size: 35px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Un poco sobre mí</h2>
+                    <p style="font-size: 19px; margin-bottom: 16px; color: #fd3efd;">
+                        Estudiante 3er año de ingenieria en informatica y telecomunicaciones en la Universidad Diego Portales. Desarrollador con experiencia en la creación de interfaces dinámicas para web y aplicaciones móviles. Especializado en el desarrollo Front-End con Tailwindcss, Google Fonts, HTML, CSS y GitHub Pages para su fácil acceso. En el ámbito móvil, trabajo con Android Studio y Flutter para construir aplicaciones nativas y multiplataforma, abarcando desde el diseño de interfaces hasta la integración con APIs.
+                    </p>
+
+                    <h2 style="font-size: 35px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Estudios y herramientas extras</h2>
+                    <p style="font-size: 19px; margin-bottom: 16px; color: #fd3efd;">
+                        También poseo experiencia en el uso de bases de datos en la nube como Neon PostgreSQL y conocimientos en lenguajes como C++, Java, MySQL, Neo4j y MongoDB. Además de herramientas complementarias como Docker, Wireshark, AWS y GitHub, integrándolas en distintos contextos académicos y de proyectos personales.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="habilidades" class="py-24 transform -skew-y-3 bg-[#0e1c3f]">
+            <div class="transform skew-y-3 container mx-auto px-6">
+                <h2 class="font-display text-4xl font-bold text-center text-[#40fefe] mb-16">Mis Habilidades</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="bg-[#1e3957] rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center border-2 border-gray-700">
+                                <svg class="w-12 h-12 text-[#40fefe]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-xl text-[#40fefe]">Desarrollo Web</h3>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-[#1e3957] rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center border-2 border-gray-700">
+                                <svg class="w-12 h-12 text-[#40fefe]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-xl text-[#40fefe]">Diseño Móvil</h3>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-[#1e3957] rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center border-2 border-gray-700">
+                                <svg class="w-12 h-12 text-[#40fefe]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-xl text-[#40fefe]">Diseño UI/UX</h3>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-[#1e3957] rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center border-2 border-gray-700">
+                           <svg class="w-12 h-12 text-[#40fefe]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7l8 5 8-5"></path></svg>
+                        </div>
+                                <h3 class="font-bold text-xl text-[#40fefe]">Bases de Datos</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portafolio" class="py-24 bg-[#690754]">
+            <div class="container mx-auto px-6">
+                <h2 class="font-display text-4xl font-bold text-center text-white mb-16">Ejemplos de proyectos</h2>
+                <div id="contenedor-proyectos">
+                
+                    <div class="iframe-card">
+                        <p style="font-size: 24px; margin-bottom: 10px; font-weight: bold; text-align: center;">
+                            Ejemplo Landing Page 1
+                        </p>
+                        <div style="width: 100%; height: 500px; flex-grow: 1;">
+                            <iframe style="width: 100%; height: 100%; border-radius: 8px; border: 2px solid #fd3efd; background-color: #1e070d;" title="Ejemplo de página anidada 1" srcdoc='
+                            <!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>FazbearGang - IA para el Futuro</title> <script src="https://cdn.tailwindcss.com"></script> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet"> <style> /* --- ESTILOS PERSONALIZADOS --- */ body { background: linear-gradient(135deg, #020024 0%, #090979 35%, #002d4b 100%); font-family: "Roboto Mono", monospace; color: #e0e0e0; } /* --- 🔥 AÑADIDO: ESTILOS PARA LA BARRA DE SCROLL --- */ body::-webkit-scrollbar { width: 7px; } body::-webkit-scrollbar-track { background: rgba(105, 7, 84, 0); border-radius: 50px; } body::-webkit-scrollbar-thumb { background: rgb(0, 212, 255); border-radius: 50px; } body::-webkit-scrollbar-thumb:hover { background: #00d4ff; } .navbar { background-color: rgba(2, 0, 36, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0, 212, 255, 0.2); } .hero-text { text-shadow: 0 0 10px rgba(0, 212, 255, 0.7), 0 0 20px rgba(0, 212, 255, 0.5); } .card { background-color: rgba(9, 9, 121, 0.2); border: 1px solid rgba(0, 212, 255, 0.3); transition: all 0.3s ease-in-out; } .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px -10px rgba(0, 212, 255, 0.4); border-color: rgba(0, 212, 255, 0.8); } .cta-button { background-color: #00d4ff; color: #020024; transition: all 0.3s ease; } .cta-button:hover { background-color: #ffffff; box-shadow: 0 0 20px #00d4ff; } /* Estilos para la animación de fade-in */ .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; } .fade-in-section.is-visible { opacity: 1; transform: translateY(0); } </style> </head> <body class="min-h-screen"> <nav class="navbar fixed top-0 left-0 right-0 z-50"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex items-center justify-between h-16"> <div class="flex items-center"> <span class="font-bold text-xl text-white hero-text">FazbearGang</span> </div> <div class="hidden md:block"> <div class="ml-10 flex items-baseline space-x-4"> <a href="#servicios" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Servicios</a> <a href="#nosotros" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nosotros</a> <a href="#contacto" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contacto</a> </div> </div> </div> </div> </nav> <main class="pt-16"> <header class="h-screen flex items-center justify-center text-center px-4"> <div class="max-w-4xl"> <h1 class="text-4xl md:text-6xl font-bold hero-text leading-tight">Desbloquea el Potencial del Mañana con Inteligencia Artificial</h1> <p class="mt-6 text-lg md:text-xl text-gray-300">En FazbearGang, transformamos datos en decisiones, complejidad en oportunidad y visiones en realidad.</p> <a href="#" onclick="return false;" class="cta-button mt-8 inline-block font-bold py-3 px-8 rounded-full text-lg">Inicia tu Proyecto</a> </div> </header> <section id="servicios" class="py-20 px-4 fade-in-section"> <div class="max-w-6xl mx-auto"> <h2 class="text-3xl font-bold text-center mb-12">Nuestras Áreas de Especialización</h2> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div class="card p-8 rounded-lg text-center"><h3 class="text-xl font-bold mb-4 text-white">Análisis Predictivo</h3><p class="text-gray-400">Anticipamos tendencias de mercado y comportamiento del consumidor para darte una ventaja competitiva.</p></div> <div class="card p-8 rounded-lg text-center"><h3 class="text-xl font-bold mb-4 text-white">Automatización de Procesos</h3><p class="text-gray-400">Optimizamos tus operaciones, reduciendo costos y liberando a tu equipo para tareas de mayor valor.</p></div> <div class="card p-8 rounded-lg text-center"><h3 class="text-xl font-bold mb-4 text-white">Procesamiento de Lenguaje Natural</h3><p class="text-gray-400">Desarrollamos chatbots y sistemas que entienden y responden a tus clientes de manera inteligente.</p></div> </div> </div> </section> <section id="nosotros" class="py-20 px-4 bg-black bg-opacity-20 fade-in-section"><div class="max-w-4xl mx-auto text-center"><h2 class="text-3xl font-bold mb-6">Innovación Impulsada por Humanos</h2><p class="text-lg text-gray-300">Somos un equipo de ingenieros, científicos de datos y visionarios apasionados por resolver los problemas más complejos del mundo. En FazbearGang, creemos que la tecnología debe servir a la humanidad, y trabajamos cada día para construir un futuro más inteligente y eficiente para todos.</p></div></section> <section id="contacto" class="py-20 px-4 fade-in-section"><div class="max-w-2xl mx-auto text-center"><h2 class="text-3xl font-bold mb-4">¿Listo para dar el salto cuántico?</h2><p class="text-gray-300 mb-8">Hablemos de cómo la IA puede revolucionar tu negocio. Déjanos tu correo y te contactaremos.</p><form class="flex flex-col md:flex-row gap-4 justify-center"><input type="email" placeholder="tu.correo@empresa.com" class="w-full md:w-auto flex-grow bg-gray-800 text-white px-4 py-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"><button type="button" class="cta-button font-bold py-3 px-8 rounded-md">Solicitar Consulta</button></form></div></section> </main> <footer class="text-center py-6 border-t border-gray-800"><p>&copy; 2025 FazbearGang. Todos los derechos reservados.</p></footer> <script> document.addEventListener("DOMContentLoaded", () => { const sections = document.querySelectorAll(".fade-in-section"); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); } }); }, { threshold: 0.1 }); sections.forEach(section => { observer.observe(section); }); }); </script> </body> </html>
+                            '>
+                            </iframe>
+                        </div>
+                        <div class="recorrer-btn">Recorrer</div>
+                    </div>
+
+                    <div class="iframe-card">
+                            <p style="font-size: 24px; margin-bottom: 10px; font-weight: bold; text-align: center;">
+                                Ejemplo Landing Page 2
+                            </p>
+                        <div style="width: 100%; height: 500px; flex-grow: 1;">
+                            <iframe style="width: 100%; height: 100%; border-radius: 8px; border: 2px solid #fd3efd; background-color: #1e070d;" title="Ejemplo de página anidada 2" srcdoc='
+                                <!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Nombre Apellido - Portafolio Profesional</title> <script src="https://cdn.tailwindcss.com"></script> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"> <script> tailwind.config = { theme: { extend: { fontFamily: { "sans": ["Lato", "sans-serif"], "display": ["Montserrat", "sans-serif"], }, colors: { "brand-accent": { 400: "#a78bfa", 500: "#8b5cf6", 600: "#7c3aed", } } } } } </script> <style> body { background-color: #030712; } .text-gradient { background-image: linear-gradient(to right, #a78bfa, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; } </style> </head> <body class="bg-gray-900 text-gray-300 font-sans antialiased"> <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700/50"> <nav class="container mx-auto px-6 py-4 flex justify-between items-center"> <div class="font-display text-2xl font-black text-white"> <a href="#" onclick="return false;">Nombre Apellido</a> </div> <div class="space-x-6 hidden md:flex"> <a href="#" onclick="return false;" class="font-semibold hover:text-brand-accent-400 transition-colors duration-300">Sobre mí</a> <a href="#" onclick="return false;" class="font-semibold hover:text-brand-accent-400 transition-colors duration-300">Habilidades</a> <a href="#" onclick="return false;" class="font-semibold hover:text-brand-accent-400 transition-colors duration-300">Portafolio</a> <a href="#" onclick="return false;" class="font-semibold hover:text-brand-accent-400 transition-colors duration-300">Contacto</a> </div> </nav> </header> <main> <section id="hero" class="relative text-center min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950 py-20"> <div class="container mx-auto px-6 z-10"> <div class="relative w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full mb-8 p-1 bg-gradient-to-tr from-brand-accent-500 to-pink-500"> <div class="bg-gray-800 w-full h-full rounded-full flex items-center justify-center"> <span class="text-gray-400 font-bold">Imagen de Perfil</span> </div> </div> <h1 class="font-display text-5xl md:text-8xl font-black text-white tracking-tighter uppercase"> <span class="text-gradient">Nombre Apellido</span> </h1> <p class="mt-4 text-xl md:text-2xl text-gray-400 font-light">Tu Profesión o Especialidad</p> <a href="#" onclick="return false;" class="font-semibold text-lg text-white bg-brand-accent-500 py-3 px-10 rounded-full mt-10 inline-block transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-brand-accent-500/30"> Conoce mi Trabajo </a> </div> </section> <section id="sobre-mi" class="py-24 bg-gray-950"> <div class="container mx-auto px-6 grid md:grid-cols-5 gap-12 items-center"> <div class="md:col-span-2"> <div class="w-full h-80 rounded-lg bg-gray-800 flex items-center justify-center border-2 border-brand-accent-500/50 shadow-lg"> <span class="text-gray-500 font-bold">Imagen 2</span> </div> </div> <div class="md:col-span-3"> <h2 class="font-display text-4xl font-bold text-white mb-4">Un poco sobre mí</h2> <p class="text-lg text-gray-400 leading-relaxed"> Aquí va una descripción sobre ti. Habla de tu pasión, tu experiencia y lo que te motiva. Puedes mencionar tus áreas de especialización y los tipos de proyectos en los que te gusta trabajar. El objetivo es dar una idea clara y concisa de quién eres como profesional y como persona. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p> </div> </div> </section> <section id="habilidades" class="py-24 bg-gray-900 transform -skew-y-3"> <div class="transform skew-y-3 container mx-auto px-6"> <h2 class="font-display text-4xl font-bold text-center text-white mb-16">Mis Habilidades</h2> <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"> <div class="text-center"> <div class="bg-gray-800 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center border-2 border-gray-700"> <svg class="w-12 h-12 text-brand-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg> </div> <h3 class="font-bold text-xl text-white">Desarrollo Web</h3> </div> <div class="text-center"> <div class="bg-gray-800 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center border-2 border-gray-700"> <svg class="w-12 h-12 text-brand-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg> </div> <h3 class="font-bold text-xl text-white">Diseño Móvil</h3> </div> <div class="text-center"> <div class="bg-gray-800 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center border-2 border-gray-700"> <svg class="w-12 h-12 text-brand-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg> </div> <h3 class="font-bold text-xl text-white">Diseño UI/UX</h3> </div> <div class="text-center"> <div class="bg-gray-800 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center border-2 border-gray-700"> <svg class="w-12 h-12 text-brand-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7l8 5 8-5"></path></svg> </div> <h3 class="font-bold text-xl text-white">Bases de Datos</h3> </div> </div> </div> </section> <section id="portafolio" class="py-24 bg-gray-950"> <div class="container mx-auto px-6"> <h2 class="font-display text-4xl font-bold text-center text-white mb-16">Mi Portafolio</h2> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> <div class="bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-accent-500/20 hover:border-brand-accent-500"> <div class="bg-gray-700 w-full h-56 flex items-center justify-center"><span class="text-gray-500">Proyecto 1</span></div> <div class="p-6"> <h3 class="font-bold text-xl text-white mb-2">Nombre del Proyecto 1</h3> <p class="text-gray-400 mb-4">Breve descripción de la tecnología o el objetivo del proyecto.</p> <a href="#" onclick="return false;" class="font-bold text-brand-accent-400 hover:underline">Ver Detalles</a> </div> </div> <div class="bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-accent-500/20 hover:border-brand-accent-500"> <div class="bg-gray-700 w-full h-56 flex items-center justify-center"><span class="text-gray-500">Proyecto 2</span></div> <div class="p-6"> <h3 class="font-bold text-xl text-white mb-2">Nombre del Proyecto 2</h3> <p class="text-gray-400 mb-4">Breve descripción de la tecnología o el objetivo del proyecto.</p> <a href="#" onclick="return false;" class="font-bold text-brand-accent-400 hover:underline">Ver Detalles</a> </div> </div> <div class="bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-accent-500/20 hover:border-brand-accent-500"> <div class="bg-gray-700 w-full h-56 flex items-center justify-center"><span class="text-gray-500">Proyecto 3</span></div> <div class="p-6"> <h3 class="font-bold text-xl text-white mb-2">Nombre del Proyecto 3</h3> <p class="text-gray-400 mb-4">Breve descripción de la tecnología o el objetivo del proyecto.</p> <a href="#" onclick="return false;" class="font-bold text-brand-accent-400 hover:underline">Ver Detalles</a> </div> </div> </div> </div> </section> <section id="contacto" class="py-24 bg-gray-900"> <div class="container mx-auto px-6 max-w-2xl text-center"> <h2 class="font-display text-4xl font-bold text-white mb-4">¿Hablamos?</h2> <p class="text-lg text-gray-400 mb-10"> Estoy disponible para proyectos freelance o simplemente para charlar. ¡Envíame un mensaje! </p> <form class="space-y-6"> <input type="email" placeholder="Tu correo electrónico" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-500 transition-all"> <textarea placeholder="Tu mensaje" rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-500 transition-all"></textarea> <button type="button" onclick="return false;" class="w-full font-semibold text-lg text-white bg-brand-accent-500 py-3 px-10 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-brand-accent-500/30"> Enviar Mensaje </button> </form> </div> </section> </main> <footer class="bg-gray-950 text-center py-8 border-t border-gray-800"> <div class="flex justify-center space-x-6 mb-4"> <a href="#" onclick="return false;" class="text-gray-500 hover:text-brand-accent-400 transition-colors"> <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.682-.217.682-.483 0-.237-.008-.865-.013-1.693-2.775.602-3.361-1.343-3.361-1.343-.453-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.606.069-.606 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.35-1.083.635-1.332-2.214-.251-4.542-1.107-4.542-4.93 0-1.088.39-1.979 1.028-2.675-.103-.253-.446-1.268.098-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 015 0c1.905-1.29 2.742-1.021 2.742-1.021.546 1.372.202 2.387.098 2.64.64.696 1.028 1.587 1.028 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.332-.012 2.407-.012 2.734 0 .267.18.577.688.482A10.001 10.001 0 0022 11.974C22 6.465 17.535 2 12.026 2z" clip-rule="evenodd" /></svg> </a> <a href="#" onclick="return false;" class="text-gray-500 hover:text-brand-accent-400 transition-colors"> <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg> </a> <a href="#" onclick="return false;" class="text-gray-500 hover:text-brand-accent-400 transition-colors"> <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-3.096 0 1.548 1.548 0 013.096 0zM6.554 7.765V16.34h-3.1V7.765h3.1zM17.88 2H6.12C3.966 2 2.12 3.855 2.12 6.012v11.976C2.12 20.145 3.966 22 6.12 22h11.76c2.154 0 3.99-1.855 3.99-4.012V6.012C21.87 3.855 20.034 2 17.88 2z" clip-rule="evenodd" /></svg> </a> </div> <p class="text-gray-500">&copy; 2025 Nombre Apellido. Todos los derechos reservados.</p> </footer> </body> </html>
+                            '>
+                            </iframe>
+                        </div>
+                        <div class="recorrer-btn">Recorrer</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="py-24 bg-[#0f1c3e]">
+            <div class="container mx-auto px-6 max-w-2xl text-center">
+                <h2 class="font-display text-4xl font-bold text-[#40fefe] mb-4">¿Hablamos?</h2>
+                <p class="text-lg text-[#40fefe] mb-10">
+                    Estoy disponible para proyectos freelance o simplemente para cualquier consulta. ¡Envíame un mensaje!
+                </p>
+                <form class="space-y-6">
+                    <input type="email" placeholder="Tu correo electrónico" class="w-full bg-[#1e3957] border border-gray-700 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#01a5cb] transition-all">
+                    <textarea placeholder="Tu mensaje" rows="5" class="w-full bg-[#1e3957] border border-gray-700 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-[#01a5cb] transition-all"></textarea>
+                    <button type="button" onclick="return false;" class="w-full font-semibold text-lg text-[#0e1c3f] bg-[#40fefe] py-3 px-10 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:bg-#40fefe">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-950 text-center py-8 border-t border-gray-800">
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="#" onclick="return false;" class="text-[#01a5cb] hover:text-[#1e3957] transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.682-.217.682-.483 0-.237-.008-.865-.013-1.693-2.775.602-3.361-1.343-3.361-1.343-.453-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.606.069-.606 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.35-1.083.635-1.332-2.214-.251-4.542-1.107-4.542-4.93 0-1.088.39-1.979 1.028-2.675-.103-.253-.446-1.268.098-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 015 0c1.905-1.29 2.742-1.021 2.742-1.021.546 1.372.202 2.387.098 2.64.64.696 1.028 1.587 1.028 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.332-.012 2.407-.012 2.734 0 .267.18.577.688.482A10.001 10.001 0 0022 11.974C22 6.465 17.535 2 12.026 2z" clip-rule="evenodd" /></svg>
+            </a>
+
+            <a href="#" onclick="return false;" class="text-[#25D366] hover:text-green-700 transition-colors">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.62 15.35 3.52 16.81L2.1 21.9L7.29 20.5C8.7 21.33 10.32 21.81 12.04 21.81C17.5 21.81 21.95 17.36 21.95 11.9C21.95 6.45 17.5 2 12.04 2M12.04 20.14C10.56 20.14 9.13 19.7 7.89 18.9L7.52 18.68L4.31 19.53L5.18 16.41L4.92 16.02C4.1 14.7 3.67 13.22 3.67 11.91C3.67 7.33 7.41 3.59 12.04 3.59C16.67 3.59 20.41 7.33 20.41 11.91C20.41 16.48 16.67 20.14 12.04 20.14M17.44 14.23C17.16 14.1 15.77 13.42 15.53 13.33C15.28 13.24 15.1 13.19 14.92 13.44C14.74 13.69 14.18 14.36 14.03 14.54C13.88 14.72 13.73 14.74 13.45 14.65C13.17 14.56 12.26 14.25 11.2 13.39C10.36 12.71 9.84 11.83 9.7 11.58C9.56 11.33 9.68 11.21 9.81 11.08C9.92 10.97 10.08 10.78 10.23 10.6C10.38 10.42 10.43 10.3 10.33 10.12C10.23 9.94 9.74 8.7 9.54 8.21C9.34 7.72 9.14 7.79 8.97 7.79C8.8 7.79 8.62 7.79 8.44 7.79C8.26 7.79 7.99 7.88 7.74 8.13C7.49 8.38 6.82 8.97 6.82 10.16C6.82 11.35 7.77 12.49 7.92 12.67C8.07 12.85 9.75 15.3 12.22 16.34C14.69 17.38 14.69 16.93 15.08 16.89C15.47 16.85 16.86 16.08 17.08 15.5C17.3 14.92 17.3 14.43 17.22 14.23H17.44Z"/></svg>
+            </a>
+
+            <a href="#" onclick="return false;" class="text-[#EA4335] hover:text-red-700 transition-colors">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+
+        
         </div>
         
-        <div style="flex-grow: 1; width: 100%;">
-            <div class="info-box" style="padding: 16px; border-radius: 12px; border: 1px solid rgb(253, 62, 253); overflow-y: auto; max-height: 300px; width: 100%; max-width: 900px; background-color: rgba(30, 7, 13, 0.8);">
-                <h2 style="font-size: 30px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Erick Román H.</h2> <div style="height: 28px;"></div> <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Áreas y herramientas</h2> <p style="font-size: 18px; margin-bottom: 16px; color: #fd3efd;"> Desarrollador con experiencia en la creación de interfaces dinámicas para web y aplicaciones móviles. Especializado en el desarrollo Front-End con React, HTML, CSS y Bootstrap para diseños responsivos y visualmente atractivos, además de publicar proyectos en GitHub Pages para su fácil acceso. En el ámbito móvil, trabaja con Android Studio y Flutter para construir aplicaciones nativas y multiplataforma, abarcando desde el diseño de interfaces hasta la integración con APIs y sistemas embebidos.
-                </p>
-                <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Estudios y herramientas extras</h2>
-                <p style="font-size: 18px; margin-bottom: 16px; color: #fd3efd;">
-                    Estudiante de tercer año de Ingeniería en la Universidad Diego Portales, con formación práctica en diversas tecnologías y entornos de desarrollo. Además de las herramientas anteriores también se tiene experiencia en el uso de bases de datos en la nube como Neon PostgreSQL, y conocimientos en lenguajes como C++, Java, MySQL, Neo4j y MongoDB. Además de herramientas complementarias como Docker, Wireshark, AWS y GitHub, integrándolas en distintos contextos académicos y de proyectos personales.
-                </p>
-                <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 8px; color: #fd3efd;">Estilo y motivación personal</h2>
-                <p style="font-size: 18px; margin-bottom: 16px; color: #fd3efd;">
-                    Apasionado por el diseño de páginas amigables con el usuario, donde cada sección está cuidadosamente pensada para ser clara, funcional y visualmente atractiva. Particular interés en la composición visual, paleta de colores y detalles que mejoran la experiencia del usuario. Valoro cada nuevo desafío como una oportunidad para aprender y crecer. Los problemas técnicos o conceptuales no son obstáculos, sino retos que se abordan con curiosidad y dedicación, Si algo es demasiado complejo, lo tomo casi como un ataque a mi orgullo. Por lo que sin importar el problema será enfrentado y superado.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="espaciado-dinamico" style="padding-left: 24px; padding-right: 24px; padding-top: 48px; padding-bottom: 48px;">
-    <div style="max-width: 1152px; margin-left: auto; margin-right: auto; padding: 32px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); margin-bottom: 48px; background-color: #0e1c3f; color: #40fefe; border: 1px solid #0e1c3f;">
-        <h1 style="font-size: 30px; font-weight: bold; margin-bottom: 16px;">Front End:</h1>
-        <p>
-            Desarrollador Front-End con experiencia en la construcción de interfaces dinámicas mediante React. Se emplea tecnología HTML y CSS para la estructura y el diseño visual, junto con Bootstrap para estilos responsivos. El uso de JSON facilita el intercambio de datos, y los proyectos se publican en GitHub Pages para su visualización y revisión por parte de los clientes.
-        </p>
-    </div>
+    </footer>
     
-    <div class="iframe-card">
-        <h1 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;"></h1>
-        <p style="font-size: 30px; margin-bottom: 1px;">
-            Ejemplo Landing Page.
-        </p>
-        <div style="height: 20px;"></div> <div style="width: 100%; height: 89%;"> <iframe 
-                style="width: 100%; height: 100%; border-radius: 8px; border: 2px solid #fd3efd; background-color: #1e070d;"
-                title="Ejemplo de página anidada"
-                srcdoc='
-                <!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>FazbearGang - IA para el Futuro</title> <script src="https://cdn.tailwindcss.com"></script> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet"> <style> /* --- ESTILOS PERSONALIZADOS --- */ body { background: linear-gradient(135deg, #020024 0%, #090979 35%, #002d4b 100%); font-family: "Roboto Mono", monospace; color: #e0e0e0; } /* --- 🔥 AÑADIDO: ESTILOS PARA LA BARRA DE SCROLL --- */ body::-webkit-scrollbar { width: 7px; } body::-webkit-scrollbar-track { background: rgba(105, 7, 84, 0); border-radius: 50px; } body::-webkit-scrollbar-thumb { background: rgb(0, 212, 255); border-radius: 50px; } body::-webkit-scrollbar-thumb:hover { background: #00d4ff; } .navbar { background-color: rgba(2, 0, 36, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0, 212, 255, 0.2); } .hero-text { text-shadow: 0 0 10px rgba(0, 212, 255, 0.7), 0 0 20px rgba(0, 212, 255, 0.5); } .card { background-color: rgba(9, 9, 121, 0.2); border: 1px solid rgba(0, 212, 255, 0.3); transition: all 0.3s ease-in-out; } .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px -10px rgba(0, 212, 255, 0.4); border-color: rgba(0, 212, 255, 0.8); } .cta-button { background-color: #00d4ff; color: #020024; transition: all 0.3s ease; } .cta-button:hover { background-color: #ffffff; box-shadow: 0 0 20px #00d4ff; } /* Estilos para la animación de fade-in */ .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; } .fade-in-section.is-visible { opacity: 1; transform: translateY(0); } </style> </head> <body class="min-h-screen"> <nav class="navbar fixed top-0 left-0 right-0 z-50"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex items-center justify-between h-16"> <div class="flex items-center"> <span class="font-bold text-xl text-white hero-text">FazbearGang</span> </div> <div class="hidden md:block"> <div class="ml-10 flex items-baseline space-x-4"> <a href="#servicios" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Servicios</a> <a href="#nosotros" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nosotros</a> <a href="#contacto" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contacto</a> </div> </div> </div> </div> </nav> <main class="pt-16"> <header class="h-screen flex items-center justify-center text-center px-4"> <div class="max-w-4xl"> <h1 class="text-4xl md:text-6xl font-bold hero-text leading-tight">Desbloquea el Potencial del Mañana con Inteligencia Artificial</h1> <p class="mt-6 text-lg md:text-xl text-gray-300">En FazbearGang, transformamos datos en decisiones, complejidad en oportunidad y visiones en realidad.</p> <a href="#" onclick="return false;" class="cta-button mt-8 inline-block font-bold py-3 px-8 rounded-full text-lg">Inicia tu Proyecto</a> </div> </header> <section id="servicios" class="py-20 px-4 fade-in-section"> <div class="max-w-6xl mx-auto"> <h2 class="text-3xl font-bold text-center mb-12">Nuestras Áreas de Especialización</h2> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div class="card p-8 rounded-lg text-center"><h3 class="text-xl font-bold mb-4 text-white">Análisis Predictivo</h3><p class="text-gray-400">Anticipamos tendencias de mercado y comportamiento del consumidor para darte una ventaja competitiva.</p></div> <div class="card p-8 rounded-lg text-center"><h3 class="text-xl font-bold mb-4 text-white">Automatización de Procesos</h3><p class="text-gray-400">Optimizamos tus operaciones, reduciendo costos y liberando a tu equipo para tareas de mayor valor.</p></div> <div class="card p-8 rounded-lg text-center"><h3 class="text-xl font-bold mb-4 text-white">Procesamiento de Lenguaje Natural</h3><p class="text-gray-400">Desarrollamos chatbots y sistemas que entienden y responden a tus clientes de manera inteligente.</p></div> </div> </div> </section> <section id="nosotros" class="py-20 px-4 bg-black bg-opacity-20 fade-in-section"><div class="max-w-4xl mx-auto text-center"><h2 class="text-3xl font-bold mb-6">Innovación Impulsada por Humanos</h2><p class="text-lg text-gray-300">Somos un equipo de ingenieros, científicos de datos y visionarios apasionados por resolver los problemas más complejos del mundo. En FazbearGang, creemos que la tecnología debe servir a la humanidad, y trabajamos cada día para construir un futuro más inteligente y eficiente para todos.</p></div></section> <section id="contacto" class="py-20 px-4 fade-in-section"><div class="max-w-2xl mx-auto text-center"><h2 class="text-3xl font-bold mb-4">¿Listo para dar el salto cuántico?</h2><p class="text-gray-300 mb-8">Hablemos de cómo la IA puede revolucionar tu negocio. Déjanos tu correo y te contactaremos.</p><form class="flex flex-col md:flex-row gap-4 justify-center"><input type="email" placeholder="tu.correo@empresa.com" class="w-full md:w-auto flex-grow bg-gray-800 text-white px-4 py-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"><button type="button" class="cta-button font-bold py-3 px-8 rounded-md">Solicitar Consulta</button></form></div></section> </main> <footer class="text-center py-6 border-t border-gray-800"><p>&copy; 2025 FazbearGang. Todos los derechos reservados.</p></footer> <script> document.addEventListener("DOMContentLoaded", () => { const sections = document.querySelectorAll(".fade-in-section"); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); } }); }, { threshold: 0.1 }); sections.forEach(section => { observer.observe(section); }); }); </script> </body> </html>
-                '>
-            </iframe>
-        </div>
-  </div>
-  
-  <div style="height: 50px;"></div> <div style="max-width: 1152px; margin-left: auto; margin-right: auto; padding: 32px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); margin-bottom: 48px; background-color: #0e1c3f; color: #40fefe; border: 1px solid #0e1c3f;">
-        <h1 style="font-size: 30px; font-weight: bold; margin-bottom: 16px;">Desarrollo Mobil Ligero:</h1>
-        <p>
-            Desarrollo aplicaciones móviles utilizando Android Studio y Flutter. Estas herramientas permiten crear apps nativas y multiplataforma con interfaces modernas y rendimiento eficiente. La experiencia incluye desde el diseño de la interfaz hasta la integración con APIs tanto con paginas web como con microprocesadores.
-        </p>
-    </div>
-    
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const botones = document.querySelectorAll('.recorrer-btn');
+            
+            botones.forEach(boton => {
+                boton.addEventListener('click', () => {
+                    const tarjeta = boton.closest('.iframe-card');
+                    
+                    // Si la tarjeta ya está agrandada, la encogemos
+                    if (tarjeta.classList.contains('agrandada')) {
+                        tarjeta.classList.remove('agrandada');
+                        boton.textContent = 'Recorrer'; // Cambiamos el texto del botón
+                    } else {
+                        // Primero, encogemos cualquier otra tarjeta que esté agrandada
+                        document.querySelectorAll('.iframe-card.agrandada').forEach(otraTarjeta => {
+                            otraTarjeta.classList.remove('agrandada');
+                             // Y restauramos el texto de su botón
+                            otraTarjeta.querySelector('.recorrer-btn').textContent = 'Recorrer';
+                        });
+                        
+                        // Luego, agrandamos la tarjeta actual
+                        tarjeta.classList.add('agrandada');
+                        boton.textContent = 'Cerrar'; // Cambiamos el texto del botón
+                    }
+                });
+            });
+            
+            // Opcional: Cerrar la tarjeta al presionar la tecla 'Escape'
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    document.querySelectorAll('.iframe-card.agrandada').forEach(tarjeta => {
+                        tarjeta.classList.remove('agrandada');
+                        tarjeta.querySelector('.recorrer-btn').textContent = 'Recorrer';
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
-
-<script>
-// --- SCRIPT PARA EL EFECTO DE DESVANECIMIENTO ---
-// // Se asegura de que el HTML se haya cargado completamente antes de ejecutar el código
-document.addEventListener('DOMContentLoaded', () => {
-// // Busca el contenedor que se va a desvanecer
-const fadeContainer = document.getElementById('fade-container');
-// // Si no lo encuentra, no hace nada más
-if (!fadeContainer) return;
-
-// // Escucha el evento de scroll en la ventana
-window.addEventListener('scroll', () => {
-    const fadeStart = 50;  // // Punto (en píxeles) donde empieza a desvanecerse
-    const fadeEnd = 300;   // // Punto (en píxeles) donde termina de desvanecerse
-    let scrollY = window.scrollY; // // Obtiene cuánto se ha hecho scroll verticalmente
-    
-    // // Si el scroll está al principio, la opacidad es 1 (totalmente visible)
-    if (scrollY <= fadeStart) {
-        fadeContainer.style.opacity = '1';
-    // // Si el scroll está entre el inicio y el fin del desvanecimiento
-    } else if (scrollY > fadeStart && scrollY <= fadeEnd) {
-        // // Calcula la opacidad: 1 menos el progreso del scroll en el rango de desvanecimiento
-        let opacity = 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart);
-        fadeContainer.style.opacity = opacity;
-    // // Si el scroll ha pasado el punto final, la opacidad es 0 (totalmente invisible)
-    } else {
-        fadeContainer.style.opacity = '0';
-    }
-});
-});
-
-// --- SCRIPT PARA AJUSTAR EL ESPACIADO SUPERIOR ---
-function ajustarEspaciado() {
-// // Busca el contenedor del contenido principal
-const contenedor = document.getElementById("espaciado-dinamico");
-// // Si no lo encuentra, no hace nada más
-if (!contenedor) return;
-
-// // Comprueba si la ventana es más ancha de 768px (vista de escritorio)
-const esHorizontal = window.innerWidth > 768;
-// // Obtiene la altura de la tarjeta de perfil que está fija arriba
-const alturaTarjetaFija = document.getElementById('fade-container')?.clientHeight || 0;
-
-// // Si es vista de escritorio
-if (esHorizontal) {
-    // // Ajusta el espaciado superior para que sea la altura de la tarjeta más 50px
-    contenedor.style.paddingTop = (alturaTarjetaFija + 50) + "px";
-// // Si es vista de móvil
-} else {
-    // // Ajusta el espaciado superior para que sea la altura de la tarjeta más 100px
-    contenedor.style.paddingTop = (alturaTarjetaFija + 100) + "px";
-}
-}
-
-// // Llama a la función cuando la página se carga por primera vez
-window.addEventListener("load", ajustarEspaciado);
-// // Llama a la función cada vez que se cambia el tamaño de la ventana (ej. al girar el celular)
-window.addEventListener("resize", ajustarEspaciado);
-</script>
